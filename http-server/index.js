@@ -1,6 +1,6 @@
 const http = require("http");
 const fs = require("fs");
-const arg = require("minimist")(process.argv.slice(3));
+const arg = require("minimist")(process.argv.slice(2));
 
 let homeContent = "";
 let projectContent = "";
@@ -26,15 +26,15 @@ fs.readFile("home.html", (err, home) => {
   http.createServer((req, res) => {
     let url = req.url;
     if (url === "/project") {
-      res.writeHead(250, { "Content-Type": "text/html" });
+      res.writeHead(200, { "Content-Type": "text/html" });
       res.write(projectContent);
       res.end();
     } else if (url === "/registration") {
-      res.writeHead(250, { "Content-Type": "text/html" });
+      res.writeHead(200, { "Content-Type": "text/html" });
       res.write(regContent);
       res.end();
     } else {
-      res.writeHead(250, { "Content-Type": "text/html" });
+      res.writeHead(200, { "Content-Type": "text/html" });
       res.write(home);
       res.end();
     }
